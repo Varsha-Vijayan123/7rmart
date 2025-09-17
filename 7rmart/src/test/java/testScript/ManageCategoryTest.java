@@ -16,7 +16,7 @@ public class ManageCategoryTest extends Base {
 	ManageCategoryPage managecategorypage;
 	
 	@Test(priority=1,description="To add Manage category information ")
-	public void addNewCategoryInManageCategoryTest() throws IOException {
+	public void verifyNewCategoryCanBeAddedInManageCategory() throws IOException {
 		String user=ExcelUtilities.getStringData(1, 0,"LoginPage");
 		String pass=ExcelUtilities.getStringData(1, 1, "LoginPage");
 		LoginPage loginpage=new LoginPage(driver);
@@ -28,11 +28,11 @@ public class ManageCategoryTest extends Base {
 		//managecategory.clickMoreInfo();
 		//managecategorypage=new ManageCategoryPage(driver);
 		managecategorypage.clickAddNewCategoryButton().addCategory(categoryname).clickChooseFileButton().clickSavebutton();
-		//boolean isAlertDisplayed=managecategorypage.isAlertDisplayed();
+		// boolean isAlertDisplayed=managecategorypage.isAlertDisplayed();
 		Assert.assertTrue(managecategorypage.isAlertDisplayed(),Constant.UPDATECATEGORY);
 	}
 	@Test(priority=2,description="To upload image in managecategory page")
-	public void uploadImageOfAnExistingCategoryInManageCategoryTest() throws IOException {
+	public void verifyUserIsAbleToUploadImageForExistingCategoryInManageCategory() throws IOException {
 		String user=ExcelUtilities.getStringData(1, 0,"LoginPage");
 		String pass=ExcelUtilities.getStringData(1, 1, "LoginPage");
 		LoginPage loginpage=new LoginPage(driver);

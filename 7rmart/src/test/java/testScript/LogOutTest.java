@@ -11,20 +11,20 @@ import pages.LoginPage;
 import utilities.ExcelUtilities;
 
 public class LogOutTest extends Base {
-	@Test(priority=1)
-	public void logOutFromLoginTest() throws IOException {
-		String user=ExcelUtilities.getStringData(1, 0,"LoginPage");
-		String pass=ExcelUtilities.getStringData(1, 1, "LoginPage");
-		LoginPage loginpage=new LoginPage(driver);
+	@Test(priority = 1)
+	public void verifyUserIsRedirectedTologinPageAfterLogOut() throws IOException {
+		String user = ExcelUtilities.getStringData(1, 0, "LoginPage");
+		String pass = ExcelUtilities.getStringData(1, 1, "LoginPage");
+		LoginPage loginpage = new LoginPage(driver);
 		loginpage.enterUsername(user);
 		loginpage.enterPassword(pass);
 		loginpage.clickSigninButton();
-		
-		LogOutPage logout=new LogOutPage(driver);
+
+		LogOutPage logout = new LogOutPage(driver);
 		logout.clickAdminButton();
 		logout.clickLogOutButton();
-		Assert.assertTrue(logout.isLoginPageDisplayed(),Constant.LOGOUTFROMPAGE);
-		
+		Assert.assertTrue(logout.isLoginPageDisplayed(), Constant.LOGOUTFROMPAGE);
+
 	}
 
 }

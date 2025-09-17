@@ -1,4 +1,5 @@
 package testScript;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
@@ -16,36 +17,28 @@ import constant.Constant;
 import utilities.ScreenShotUtility;
 import utilities.WaitUtility;
 
-
-
-
 public class Base {
 	Properties properties;
 	public WebDriver driver;
-	@BeforeMethod(alwaysRun=true)//alwaysRun=true ensures that this method runs een if there are failures in the test ethods
-	@Parameters("browser")//get the browser name from the l file
-	
-	public void browserIntialisation(String browser) throws Exception
-	{
+
+	@BeforeMethod(alwaysRun = true) // alwaysRun=true ensures that this method runs een if there are failures in the
+									// test ethods
+	@Parameters("browser") // get the browser name from the l file
+
+	public void browserIntialisation(String browser) throws Exception {
 		try {
-			properties=new Properties();
-			FileInputStream fileinputstream=new FileInputStream(Constant.CONFIGFILE);
+			properties = new Properties();
+			FileInputStream fileinputstream = new FileInputStream(Constant.CONFIGFILE);
 			properties.load(fileinputstream);
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("File not found");
 		}
-		//driver=new ChromeDriver();
-		if(browser.equalsIgnoreCase("chrome"))
-		{
-			driver=new ChromeDriver();
-		}
-		else if(browser.equalsIgnoreCase("firefox")) 
-		{
-			driver=new FirefoxDriver();
-		}
-		else
-		{
+		// driver=new ChromeDriver();
+		if (browser.equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver();
+		} else if (browser.equalsIgnoreCase("firefox")) {
+			driver = new FirefoxDriver();
+		} else {
 			throw new Exception("Browser not supported");
 		}
 		driver.get("https://groceryapp.uniqassosiates.com/admin");
@@ -53,16 +46,15 @@ public class Base {
 
 		driver.manage().window().maximize();
 	}
-	@AfterMethod(alwaysRun=true)
-		public void quitandClose(ITestResult iTestResult) throws IOException {
-			if (iTestResult.getStatus() == ITestResult.FAILURE) {
-				ScreenShotUtility scrShot = new ScreenShotUtility(); // creating obj
-				scrShot.getScreenShot(driver, iTestResult.getName());
+
+	@AfterMethod(alwaysRun = true)
+	public void quitandClose(ITestResult iTestResult) throws IOException {
+		if (iTestResult.getStatus() == ITestResult.FAILURE) {
+			ScreenShotUtility scrShot = new ScreenShotUtility(); // creating obj
+			scrShot.getScreenShot(driver, iTestResult.getName());
 
 		}
 		driver.quit();
-		
+
 	}
 }
-
-

@@ -16,7 +16,7 @@ public class ManageNewsTest extends Base {
 	LogOutPage logoutpage;
 	
 	@Test(priority=1,groups= {"regression"} ,retryAnalyzer=retry.Retry.class,description="to add a new news")
-	public void addANewsInManageNewsTest() throws IOException
+	public void verifyUserIsAbleToAddNewsInManageNews() throws IOException
 	{
 		/*String news="New new is added";
 		String user="admin";
@@ -40,7 +40,7 @@ public class ManageNewsTest extends Base {
 	
 	}
 	@Test(priority=2,description="to update a news")
-	public void UpdateANewsInManageNewsTest() throws IOException
+	public void verifyUserIsAbleToUpdateNewsInManageNews() throws IOException
 	{
 		/*String news="This is the updated news";
 		String user="admin";

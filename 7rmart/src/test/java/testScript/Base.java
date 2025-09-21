@@ -41,7 +41,8 @@ public class Base {
 		} else {
 			throw new Exception("Browser not supported");
 		}
-		driver.get("https://groceryapp.uniqassosiates.com/admin");
+		//driver.get("https://groceryapp.uniqassosiates.com/admin");
+		driver.get(properties.getProperty("url"));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(WaitUtility.IMPLICITWAIT));
 
 		driver.manage().window().maximize();

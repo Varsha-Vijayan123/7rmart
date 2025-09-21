@@ -8,10 +8,10 @@ public class ExtendReportUtility {
 
 	public synchronized static ExtentReports createExtentReports() {
 		ExtentSparkReporter reporter = new ExtentSparkReporter("./extent-reports/extent-report.html");
-		reporter.config().setReportName("demo Project");
+		reporter.config().setReportName("7rmart");
 		extentReports.attachReporter(reporter);
 		extentReports.setSystemInfo("Organization", "Obsqura");
-		extentReports.setSystemInfo("Name", "aaaa");
+		extentReports.setSystemInfo("Name", "ssss");
 		return extentReports;
 	}
 }
